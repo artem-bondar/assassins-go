@@ -15,10 +15,6 @@ public class PlayerMover : MonoBehaviour
 
     private void Start()
     {
-        Move(new Vector3(2f, 0f, 0f), 1f);
-        Move(new Vector3(4f, 0f, 0f), 3f);
-        Move(new Vector3(4f, 0f, 2f), 5f);
-        Move(new Vector3(4f, 0f, 4f), 7f);
     }
 
     private IEnumerator MoveRoutine(Vector3 destinationPosition, float delayTime)
@@ -51,4 +47,28 @@ public class PlayerMover : MonoBehaviour
 
     public void Move(Vector3 destinationPosition, float delayTime = 0.25f) =>
         StartCoroutine(MoveRoutine(destinationPosition, delayTime));
+
+    public void MoveLeft()
+    {
+        Vector3 newPosition = transform.position + new Vector3(-2, 0, 0);
+        Move(newPosition, 0);
+    }
+
+    public void MoveRight()
+    {
+        Vector3 newPosition = transform.position + new Vector3(2, 0, 0);
+        Move(newPosition, 0);
+    }
+
+    public void MoveForward()
+    {
+        Vector3 newPosition = transform.position + new Vector3(0, 0, 2);
+        Move(newPosition, 0);
+    }
+
+    public void MoveBackward()
+    {
+        Vector3 newPosition = transform.position + new Vector3(0, 0, -2);
+        Move(newPosition, 0);
+    }
 }
