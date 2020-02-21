@@ -2,10 +2,18 @@
 
 public class PlayerInput : MonoBehaviour
 {
-    public float h;
-    public float v;
+    private float h;
+    public float H { get => h; }
 
-    public bool inputEnabled = false;
+    private float v;
+    public float V { get => v; }
+
+    private bool inputEnabled = false;
+    public bool InputEnabled
+    {
+        get => inputEnabled;
+        set => inputEnabled = value;
+    }
 
     public void GetKeyInput()
     {
