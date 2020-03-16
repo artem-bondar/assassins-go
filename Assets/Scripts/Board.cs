@@ -11,7 +11,7 @@ public class Board : MonoBehaviour
         new Vector2(spacing, 0f),
         new Vector2(-spacing, 0f),
         new Vector2(0f, spacing),
-        new Vector2(0f, -spacing),
+        new Vector2(0f, -spacing)
     };
 
     private List<Node> allNodes = new List<Node>();
