@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 
 using UnityEngine;
 
@@ -12,10 +13,12 @@ public class Node : MonoBehaviour
 
     private Board board;
 
+    private bool isInitialized = false;
+
     public GameObject geometry;
 
     public float scaleTime = 0.3f;
-    public float delay = 1f;
+    public float delay = 0.3f;
 
     public iTween.EaseType easeType = iTween.EaseType.easeInExpo;
 
@@ -36,12 +39,24 @@ public class Node : MonoBehaviour
 
         if (autoRun)
         {
-            ShowGeometry();
+            InitNode();
         }
 
         if (board != null)
         {
             neighbourNodes = FindNeighbours(board.AllNodes);
+        }
+    }
+
+    private void InitNeighbours() => StartCoroutine(InitNeighboursRoutine());
+
+    private IEnumerator InitNeighboursRoutine()
+    {
+        yield return new WaitForSeconds(delay);
+
+        foreach (Node node in neighbourNodes)
+        {
+            node.InitNode();
         }
     }
 
@@ -73,5 +88,15 @@ public class Node : MonoBehaviour
         }
 
         return nodesList;
+    }
+
+    public void InitNode()
+    {
+        if (!isInitialized)
+        {
+            ShowGeometry();
+            InitNeighbours();
+            isInitialized = true;
+        }
     }
 }
