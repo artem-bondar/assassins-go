@@ -11,6 +11,9 @@ public class Node : MonoBehaviour
     private List<Node> neighbourNodes = new List<Node>();
     public List<Node> NeighbourNodes => neighbourNodes;
 
+    private List<Node> linkedNodes = new List<Node>();
+    public List<Node> LinkedNodes => linkedNodes;
+
     private Board board;
 
     private bool isInitialized = false;
@@ -57,8 +60,11 @@ public class Node : MonoBehaviour
 
         foreach (Node node in neighbourNodes)
         {
-            LinkNode(node);
-            node.InitNode();
+            if (!linkedNodes.Contains(node))
+            {
+                LinkNode(node);
+                node.InitNode();
+            }
         }
     }
 
@@ -74,6 +80,16 @@ public class Node : MonoBehaviour
             if (link != null)
             {
                 link.DrawLink(transform.position, targetNode.transform.position);
+            }
+
+            if (!linkedNodes.Contains(targetNode))
+            {
+                linkedNodes.Add(targetNode);
+            }
+
+            if (!targetNode.LinkedNodes.Contains(this))
+            {
+                targetNode.LinkedNodes.Add(this);
             }
         }
     }
