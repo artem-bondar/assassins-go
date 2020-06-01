@@ -17,7 +17,15 @@ public class PlayerMover : MonoBehaviour
 
     private void Awake() => board = Object.FindObjectOfType<Board>().GetComponent<Board>();
 
-    private void Start() => UpdateBoard();
+    private void Start()
+    {
+        UpdateBoard();
+
+        if (board != null && board.PlayerNode != null)
+        {
+            board.PlayerNode.InitNode();
+        }
+    }
 
     private IEnumerator MoveRoutine(Vector3 destinationPosition, float delayTime)
     {

@@ -26,8 +26,6 @@ public class Node : MonoBehaviour
 
     public iTween.EaseType easeType = iTween.EaseType.easeInExpo;
 
-    public bool autoRun = false;
-
     public LayerMask obstacleLayer;
 
     private void Awake()
@@ -41,11 +39,6 @@ public class Node : MonoBehaviour
         if (geometry != null)
         {
             geometry.transform.localScale = Vector3.zero;
-        }
-
-        if (autoRun)
-        {
-            InitNode();
         }
 
         if (board != null)
