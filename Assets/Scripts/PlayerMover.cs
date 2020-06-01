@@ -13,6 +13,10 @@ public class PlayerMover : MonoBehaviour
     public float moveSpeed = 1.5f;
     public float iTweenDelay = 0f;
 
+    private Board board;
+
+    private void Awake() => board = Object.FindObjectOfType<Board>().GetComponent<Board>();
+
     private void Start()
     {
     }
@@ -45,30 +49,40 @@ public class PlayerMover : MonoBehaviour
         isMoving = false;
     }
 
-    public void Move(Vector3 destinationPosition, float delayTime = 0.25f) =>
-        StartCoroutine(MoveRoutine(destinationPosition, delayTime));
+    public void Move(Vector3 destinationPosition, float delayTime = 0.25f)
+    {
+        if (board != null)
+        {
+            Node targetNode = board.FindNodeAt(destinationPosition);
+
+            if (targetNode != null)
+            {
+                StartCoroutine(MoveRoutine(destinationPosition, delayTime));
+            }
+        }
+    }
 
     public void MoveLeft()
     {
-        Vector3 newPosition = transform.position + new Vector3(-2, 0, 0);
+        Vector3 newPosition = transform.position + new Vector3(-Board.spacing, 0f, 0f);
         Move(newPosition, 0);
     }
 
     public void MoveRight()
     {
-        Vector3 newPosition = transform.position + new Vector3(2, 0, 0);
+        Vector3 newPosition = transform.position + new Vector3(Board.spacing, 0f, 0f);
         Move(newPosition, 0);
     }
 
     public void MoveForward()
     {
-        Vector3 newPosition = transform.position + new Vector3(0, 0, 2);
+        Vector3 newPosition = transform.position + new Vector3(0f, 0f, Board.spacing);
         Move(newPosition, 0);
     }
 
     public void MoveBackward()
     {
-        Vector3 newPosition = transform.position + new Vector3(0, 0, -2);
+        Vector3 newPosition = transform.position + new Vector3(0f, 0f, -Board.spacing);
         Move(newPosition, 0);
     }
 }
