@@ -51,6 +51,9 @@ MonoBehaviour:
   delay: 0.1
   easeType: 15
   autoRun: 0
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1001 &3903798366626107363
 PrefabInstance:
   m_ObjectHideFlags: 0
