@@ -17,9 +17,7 @@ public class PlayerMover : MonoBehaviour
 
     private void Awake() => board = Object.FindObjectOfType<Board>().GetComponent<Board>();
 
-    private void Start()
-    {
-    }
+    private void Start() => UpdateBoard();
 
     private IEnumerator MoveRoutine(Vector3 destinationPosition, float delayTime)
     {
@@ -47,6 +45,16 @@ public class PlayerMover : MonoBehaviour
         transform.position = destinationPosition;
 
         isMoving = false;
+
+        UpdateBoard();
+    }
+
+    private void UpdateBoard()
+    {
+        if (board != null)
+        {
+            board.UpdatePlayerNode();
+        }
     }
 
     public void Move(Vector3 destinationPosition, float delayTime = 0.25f)
@@ -55,7 +63,7 @@ public class PlayerMover : MonoBehaviour
         {
             Node targetNode = board.FindNodeAt(destinationPosition);
 
-            if (targetNode != null)
+            if (targetNode != null && board.PlayerNode.LinkedNodes.Contains(targetNode))
             {
                 StartCoroutine(MoveRoutine(destinationPosition, delayTime));
             }
