@@ -67,16 +67,51 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator StartLevelRoutine()
     {
-        yield return null;
+        Debug.Log("Start level");
+
+        player.playerInput.InputEnabled = false;
+
+        while (!hasLevelStarted)
+        {
+            yield return null;
+        }
     }
 
     private IEnumerator PlayLevelRoutine()
     {
-        yield return null;
+        Debug.Log("Play level");
+
+        isGamePlaying = true;
+
+        yield return new WaitForSeconds(delay);
+
+        player.playerInput.InputEnabled = true;
+
+        while (!isGameOver)
+        {
+            yield return null;
+        }
     }
 
     private IEnumerator EndLevelRoutine()
     {
-        yield return null;
+        Debug.Log("End level");
+
+        player.playerInput.InputEnabled = false;
+
+        while (!hasLevelFinished)
+        {
+            yield return null;
+        }
+
+        RestartLevel();
     }
+
+    private void RestartLevel()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
+    }
+
+    public void PlayLevel() => hasLevelStarted = true;
 }
