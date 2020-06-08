@@ -90,4 +90,12 @@ public class Board : MonoBehaviour
             ));
         }
     }
+
+    public void InitBoard()
+    {
+        if (playerNode != null)
+        {
+            playerNode.InitNode();
+        }
+    }
 }

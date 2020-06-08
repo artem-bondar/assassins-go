@@ -7615,7 +7615,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07d23199ccbb5104283201ea7cdd48f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 1.5
+  delay: 1
   startLevelEvent:
     m_PersistentCalls:
       m_Calls:
@@ -7668,6 +7668,17 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1951392321}
         m_MethodName: DrawGoal
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1951392321}
+        m_MethodName: InitBoard
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
         set => isGameOver = value;
     }
 
-    public float delay = 1.5f;
+    public float delay = 1f;
 
     public UnityEvent startLevelEvent;
     public UnityEvent playLevelEvent;
