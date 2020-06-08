@@ -38,7 +38,11 @@ public class GameManager : MonoBehaviour
         set => isGameOver = value;
     }
 
-    public float delay = 1f;
+    public float delay = 1.5f;
+
+    public UnityEvent startLevelEvent;
+    public UnityEvent playLevelEvent;
+    public UnityEvent endLevelEvent;
 
     private void Awake()
     {
@@ -75,6 +79,11 @@ public class GameManager : MonoBehaviour
         {
             yield return null;
         }
+
+        if (startLevelEvent != null)
+        {
+            startLevelEvent.Invoke();
+        }
     }
 
     private IEnumerator PlayLevelRoutine()
@@ -87,6 +96,11 @@ public class GameManager : MonoBehaviour
 
         player.playerInput.InputEnabled = true;
 
+        if (playLevelEvent != null)
+        {
+            playLevelEvent.Invoke();
+        }
+
         while (!isGameOver)
         {
             yield return null;
@@ -98,6 +112,11 @@ public class GameManager : MonoBehaviour
         Debug.Log("End level");
 
         player.playerInput.InputEnabled = false;
+
+        if (endLevelEvent != null)
+        {
+            endLevelEvent.Invoke();
+        }
 
         while (!hasLevelFinished)
         {
