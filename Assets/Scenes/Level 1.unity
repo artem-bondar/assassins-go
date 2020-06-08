@@ -4868,6 +4868,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 580555305}
     m_Modifications:
+    - target: {fileID: 3903798365835258217, guid: 377dfc9874a80f04491ae4fb266519d8,
+        type: 3}
+      propertyPath: isLevelGoal
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3903798365835258222, guid: 377dfc9874a80f04491ae4fb266519d8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7192,6 +7197,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6163c2bdef7093d42bbee2180e0544a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goalPrefab: {fileID: 2888000428435241435, guid: 2d4af1dfe9330bf4eb366a3f36c65c1c,
+    type: 3}
+  drawGoalTime: 2
+  drawGoalDelay: 2
+  drawGoalEaseType: 16
 --- !u!1001 &1978383953
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7648,6 +7658,17 @@ MonoBehaviour:
       - m_Target: {fileID: 1738042895}
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1951392321}
+        m_MethodName: DrawGoal
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
